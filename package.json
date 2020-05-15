@@ -1,8 +1,7 @@
 {
-  "name": "datta-able-rv18.0.4",
+  "name": "voteco-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://lite.codedthemes.com/datta-able/react/default/",
   "dependencies": {
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
@@ -27,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://voteco-app",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
