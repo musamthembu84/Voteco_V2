@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+import {Row, Col, Card, Table} from 'react-bootstrap';
 
 import Aux from "../../hoc/_Aux";
 import DEMO from "../../store/constant";
@@ -10,7 +10,7 @@ import avatar3 from '../../assets/images/user/avatar-3.jpg';
 
 class Dashboard extends React.Component {
     render() {
-        const tabContent = (
+      /*  const tabContent = (
             <Aux>
                 <div className="media friendlist-box align-items-center justify-content-center m-b-20">
                     <div className="m-r-10 photo-table">
@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
                 </div>
             </Aux>
         );
-
+*/
         return (
             <Aux>
                 <Row>
