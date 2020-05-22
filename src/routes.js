@@ -5,7 +5,9 @@ window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 
-const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
+
+
+
 
 const UIBasicButton = React.lazy(() => import('./Demo/UIElements/Basic/Button'));
 const UIBasicBadges = React.lazy(() => import('./Demo/UIElements/Basic/Badges'));
@@ -25,6 +27,7 @@ const GoogleMap = React.lazy(() => import('./Demo/Maps/GoogleMap/index'));
 
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
+const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
 
 const routes = [
     { path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },

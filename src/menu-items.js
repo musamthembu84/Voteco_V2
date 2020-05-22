@@ -15,6 +15,8 @@ export default {
                 }
             ]
         },
+
+        /*
         {
             id: 'ui-element',
             title: 'UI ELEMENT',
@@ -111,9 +113,11 @@ export default {
                 }
             ]
         },
+
+      */
         {
             id: 'pages',
-            title: 'Pages',
+            title: 'Exit',
             type: 'group',
             icon: 'icon-pages',
             children: [
@@ -145,7 +149,7 @@ export default {
                         }
                     ]
                 },
-
+                /*
                 {
                     id: 'sample-page',
                     title: 'Sample Page',
@@ -208,9 +212,11 @@ export default {
                         }
                     ]
                 },
+                */
                 {
+
                     id: 'disabled-menu',
-                    title: 'Disabled Menu',
+                    title: 'Logout',
                     type: 'item',
                     url: '#',
                     classes: 'nav-item disabled',
