@@ -4,11 +4,15 @@ import {NavLink} from 'react-router-dom';
 import './../../../assets/scss/style.scss';
 import Aux from "../../../hoc/_Aux";
 import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
+import LoginButtonContainer from "./LoginButtonContainer";
 
 class SignUp1 extends React.Component {
+
+
     render () {
+
         return(
-            <Aux>
+           <Aux>
                 <Breadcrumb/>
                 <div className="auth-wrapper">
                     <div className="auth-content">
@@ -39,11 +43,13 @@ class SignUp1 extends React.Component {
                                 <button className="btn btn-primary shadow-2 mb-4" >Login</button>
                                 <p className="mb-2 text-muted">Forgot password? <NavLink to="/auth/reset-password-1">Reset</NavLink></p>
                                 <p className="mb-0 text-muted">Don’t have an account? <NavLink to="/auth/signup-1">Signup</NavLink></p>
+                                <LoginButtonContainer/>
                             </div>
                         </div>
                     </div>
                 </div>
             </Aux>
+
         );
     }
 }
