@@ -5,7 +5,7 @@ contract("Election", function (accounts) {
 
     let  electionInstance;
 
-    it("initialize all candidates", function(){
+    it("initialize all  ready candidates", function(){
         return Election.deployed().then(function (instance){
             return instance.candidatesCount();
         }).then(function (count) {
