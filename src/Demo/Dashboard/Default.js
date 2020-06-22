@@ -3,15 +3,16 @@ import {Row, Col, Card, Table} from 'react-bootstrap';
 
 import Aux from "../../hoc/_Aux";
 import DEMO from "../../store/constant";
+import  img from "../../assets/images/user/1.jpg";
 
-import avatar1 from '../../assets/images/user/avatar-1.jpg';
-import avatar2 from '../../assets/images/user/avatar-2.jpg';
-import avatar3 from '../../assets/images/user/avatar-3.jpg';
+
+
 
 import Web3 from "web3";
 import Election from '../../../build/contracts/Election'
 
 class Dashboard extends React.Component {
+
     componentWillMount(){
         this.loadBlockchainData();
     }
@@ -20,15 +21,28 @@ class Dashboard extends React.Component {
         const web3  = new Web3(Web3.givenProvider || "http://localhost:8545");
         const accounts  = await web3.eth.getAccounts();
         this.setState({account: accounts[0]});
-        console.log("-------Accounts----" + accounts);
+
 
         const networkID = await web3.eth.net.getId();
         const networkData = Election.networks[networkID];
 
-        console.log("haha" + networkData);
+
         const election = web3.eth.Contract(Election.abi,networkData.address);
+        this.setState({election});
+
+        const candidateCount = await election.methods.candidatesCount().call();
+        this.setState({candidateCount});
+
+
+        for(let i =1 ; i<=candidateCount; i++){
+            const allCandidates =  await election.methods.candidates(i).call();
+            this.setState({
+                candidates:[...this.state.candidates,allCandidates]
+            })
+        }
 
     }
+
 
     constructor(props){
         super(props);
@@ -38,10 +52,29 @@ class Dashboard extends React.Component {
             candidates:[],
             voterID:''
         }
+        this.castVote = this.castVote.bind(this);
     }
 
+    castVote(candidate_id){
+        this.state.election.methods.vote(candidate_id).send({from:this.state.account})
+    }
+
+
+    performVoting = (event, candidateId,candidateName) => {
+        event.preventDefault();
+        console.log("Candidate " + candidateId + " was voted for")
+        this.castVote(candidateId);
+
+         alert("Thank you for selecting " +candidateName);
+
+    };
+
+
     render() {
+
+
         return (
+
             <Aux>
                 <Row>
                     <Col md={6} xl={4}>
@@ -107,64 +140,43 @@ class Dashboard extends React.Component {
                                 <Card.Title as='h5'>Eligible Candidates</Card.Title>
                             </Card.Header>
                             <Card.Body className='px-0 py-2'>
+
                                 <Table responsive hover>
                                     <tbody>
-                                    <tr className="unread">
-                                        <td><img className="rounded-circle" style={{width: '40px'}} src={avatar1} alt="activity-user"/></td>
-                                        <td>
-                                            <h6 className="mb-1">SASCO</h6>
-                                            <p className="m-0">Future Leaders</p>
-                                        </td>
-                                        <td>
-                                            <h6 className="text-muted"><i className="fa fa-circle text-c-green f-10 m-r-15"/>3 Votes</h6>
-                                        </td>
-                                        <td><a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a><a href={DEMO.BLANK_LINK} className="label theme-bg text-white f-12">Vote</a></td>
-                                    </tr>
-                                    <tr className="unread">
-                                        <td><img className="rounded-circle" style={{width: '40px'}} src={avatar2} alt="activity-user"/></td>
-                                        <td>
-                                            <h6 className="mb-1">EFFSC</h6>
-                                            <p className="m-0">Leadership Command</p>
-                                        </td>
-                                        <td>
-                                            <h6 className="text-muted"><i className="fa fa-circle text-c-red f-10 m-r-15"/>0 votes</h6>
-                                        </td>
-                                        <td><a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a><a href={DEMO.BLANK_LINK} className="label theme-bg text-white f-12">Vote</a></td>
-                                    </tr>
-                                    <tr className="unread">
-                                        <td><img className="rounded-circle" style={{width: '40px'}} src={avatar3} alt="activity-user"/></td>
-                                        <td>
-                                            <h6 className="mb-1">DASO</h6>
-                                            <p className="m-0">Student Movement</p>
-                                        </td>
-                                        <td>
-                                            <h6 className="text-muted"><i className="fa fa-circle text-c-green f-10 m-r-15"/>2 votes</h6>
-                                        </td>
-                                        <td><a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a><a href={DEMO.BLANK_LINK} className="label theme-bg text-white f-12">Vote</a></td>
-                                    </tr>
-                                    <tr className="unread">
-                                        <td><img className="rounded-circle" style={{width: '40px'}} src={avatar1} alt="activity-user"/></td>
-                                        <td>
-                                            <h6 className="mb-1">IFP</h6>
-                                            <p className="m-0">Student Command Council</p>
-                                        </td>
-                                        <td>
-                                            <h6 className="text-muted f-w-300"><i className="fa fa-circle text-c-red f-10 m-r-15"/>7 votes</h6>
-                                        </td>
-                                        <td><a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a><a href={DEMO.BLANK_LINK} className="label theme-bg text-white f-12">Vote</a></td>
-                                    </tr>
-                                    <tr className="unread">
-                                        <td><img className="rounded-circle" style={{width: '40px'}} src={avatar2} alt="activity-user"/></td>
-                                        <td>
-                                            <h6 className="mb-1">BFF</h6>
-                                            <p className="m-0">Black leaders council</p>
-                                        </td>
-                                        <td>
-                                            <h6 className="text-muted"><i className="fa fa-circle text-c-green f-10 m-r-15"/>5 votes</h6>
-                                        </td>
-                                        <td><a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a><a href={DEMO.BLANK_LINK} className="label theme-bg text-white f-12">Vote</a></td>
-                                    </tr>
+
+
+                                    {
+                                        this.state.candidates.map((candidate,key)=> {
+                                        return (
+
+                                            <tr className="unread">
+                                                <td>
+                                                    <img className="rounded-circle" style={{width: '40px'}} src={require(`../../assets/images/user/${candidate.id}.jpg`)}  alt="activity-user"/>
+                                                </td>
+
+                                                <td>
+                                                    <h6 className="mb-1">{candidate.name}</h6>
+                                                </td>
+
+
+                                                <td>
+                                                    <h6 className="text-muted"><i className="fa fa-circle text-c-green f-10 m-r-15"/>{candidate.voteCount.toString()}</h6>
+                                                </td>
+
+                                                <td>
+
+                                                    {<a href="" onClick={(event => {this.performVoting(event,candidate.id,candidate.name)})} className="label theme-bg text-white f-12">Vote</a>}
+
+                                                    <a href={DEMO.BLANK_LINK} className="label theme-bg2 text-white f-12">Read Manifesto</a>
+
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+
                                     </tbody>
+
+
                                 </Table>
                             </Card.Body>
                         </Card>

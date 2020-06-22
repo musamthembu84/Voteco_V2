@@ -39,4 +39,10 @@ contract Election {
         candidates[_candidateID].voteCount ++; //update candidatesCount
 
     }
+
+    function checkIfAccountVoted() public returns(bool) {
+
+        //require(!voters[msg.sender]);
+        return true;
+    }
 }
