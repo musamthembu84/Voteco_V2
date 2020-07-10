@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
         const accounts  = await web3.eth.getAccounts();
         this.setState({account: accounts[0]});
 
-
+        console.log("ether account" + accounts)
         const networkID = await web3.eth.net.getId();
         const networkData = Election.networks[networkID];
 

@@ -1,6 +1,6 @@
 export default {
-    defaultPath: '/dashboard/default',
-   // defaultPath:'auth/signin-1',
+    //defaultPath: '/dashboard/default',
+    defaultPath:'auth/signin-1',
     basename: '/Voteco', // only at build time to set, like /datta-able
     layout: 'vertical', // vertical, horizontal (not available in lite version)
     preLayout: null, // (not available in lite version)
