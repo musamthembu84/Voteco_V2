@@ -10,7 +10,6 @@ import  img from "../../assets/images/user/1.jpg";
 
 import Web3 from "web3";
 import Election from '../../../build/contracts/Election'
-
 class Dashboard extends React.Component {
 
     componentWillMount(){
