@@ -3,6 +3,9 @@ import LoginButton from './LoginButton'
 import { browserHistory } from 'react-router';
 
 import { uport } from '../../../util/connectors';
+
+
+
 const mapStateToProps = (state, ownProps) => {
     return {}
 }
@@ -19,17 +22,17 @@ function userLoggedIn(user) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
         onLoginUserClick: (event) => {
-            uport.requestCredentials().then((credentials) => {
-                dispatch(userLoggedIn(credentials))
-
-                var currentLocation = browserHistory.getCurrentLocation()
-
-              if ('redirect' in currentLocation.query)
-                {
-                  //  return browserHistory.push(decodeURIComponent(currentLocation.query.redirect))
-                }
+            uport.requestCredentials().then(() => {
+              //   registerResolver();
+              // //  dispatch(userLoggedIn(credentials))
+              //
+              //  var currentLocation = browserHistory.getCurrentLocation()
+              //
+              // if ('redirect' in currentLocation.query)
+              //   {
+              //       return browserHistory.push(decodeURIComponent(currentLocation.query.redirect))
+              //   }
 
                  browserHistory.push('/dashboard/default');
 

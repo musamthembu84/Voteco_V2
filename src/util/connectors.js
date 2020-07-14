@@ -9,5 +9,5 @@
 
 import { Connect } from 'uport-connect'
 
-export let uport = new Connect('Voteco Online Voting')
+export let uport = new Connect('Voteco')
 export const web3 = uport.getWeb3()
