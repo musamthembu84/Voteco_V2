@@ -187,7 +187,7 @@ class Dashboard extends React.Component {
                             <Card.Body>
                                 <div className="row align-items-center justify-content-center">
                                     <div className="col">
-                                        <h5 className="m-0">UJ SRC Elections</h5>
+                                        <h5 className="m-0">SRC Elections</h5>
                                     </div>
                                     <div className="col-auto">
                                         <label className="label theme-bg2 text-white f-14 f-w-400 float-right">100%</label>
@@ -205,8 +205,8 @@ class Dashboard extends React.Component {
                                         <i className="feather icon-zap f-30 text-c-green"/>
                                     </div>
                                     <div className="col">
-                                        <h3 className="f-w-300">235</h3>
-                                        <span className="d-block text-uppercase">total ideas</span>
+                                        <h3 className="f-w-300">5</h3>
+                                        <span className="d-block text-uppercase">Manifesto's</span>
                                     </div>
                                 </div>
                             </Card.Body>
@@ -216,7 +216,7 @@ class Dashboard extends React.Component {
                                         <i className="feather icon-map-pin f-30 text-c-blue"/>
                                     </div>
                                     <div className="col">
-                                        <h3 className="f-w-300">26</h3>
+                                        <h3 className="f-w-300">10</h3>
                                         <span className="d-block text-uppercase">total locations</span>
                                     </div>
                                 </div>
