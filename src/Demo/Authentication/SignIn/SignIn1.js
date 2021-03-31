@@ -35,7 +35,7 @@ class SignUp1 extends React.Component {
                                 </div>
                                 <h3 className="mb-4">Login</h3>
                                 <div className="input-group mb-3">
-                                    <input type="email" className="form-control" placeholder="Email"/>
+                                    <input type="email" className="form-control" placeholder="student email"/>
                                 </div>
                                 <div className="input-group mb-4">
                                     <input type="password" className="form-control" placeholder="password"/>
